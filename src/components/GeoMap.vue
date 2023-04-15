@@ -217,7 +217,7 @@ const getMapJson = async (url: string) => {
                 effect: {
                     show: true,
                     period: 3,
-                    trailLength: 0,
+                    trailLength: 0.01,
                     symbol: DogSvg,
                     symbolSize: 20,
                     // roundTrip: true,
