@@ -7,6 +7,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import { resolve } from 'node:path'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -29,7 +30,13 @@ export default defineConfig({
       dirs: 'src/components',
       dts: 'custom/component.d.ts',
       resolvers: [NaiveUiResolver()]
-    })
+    }),
+    createSvgIconsPlugin({
+      iconDirs: [resolve(process.cwd(), "src/assets/icons")],
+      symbolId: "icon-[dir]-[name]",
+      inject: "body-last",
+      customDomId: "__svg__icons__dom__",
+  }),
   ],
   resolve: {
     alias: {
@@ -41,7 +48,7 @@ export default defineConfig({
     port: 5174,
     proxy: {
       '/api': {
-        target: 'https://echarts.apache.org/examples',
+        target: 'https://geo.datav.aliyun.com/areas_v3',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }

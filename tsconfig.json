@@ -15,7 +15,7 @@
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "types": ["vite/client", "node", "naive-ui/volar"],
+    "types": ["vite/client", "node", "naive-ui/volar", "vite-plugin-svg-icons/client"],
     "paths": {
       "@/*": ["./src/*"]
     }

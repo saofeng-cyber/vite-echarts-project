@@ -1,12 +1,15 @@
 import { EchartTheme } from '@/common/echarts';
+import { AppSetting, getSettingTheme, setSettingTheme } from './help';
 
-export const usethemeStore = defineStore('themestore', () => {
-  const theme = ref<EchartTheme>('light');
-  const changeTheme = (localTheme: EchartTheme) => {
-    theme.value = localTheme;
-  };
-  return {
-    theme,
-    changeTheme
-  };
+export const usethemeStore = defineStore('themestore', {
+  state: (): AppSetting => getSettingTheme(),
+  actions: {
+    setTheme(theme: EchartTheme) {
+      this.theme = theme;
+      this.recordState()
+    },
+    recordState() {
+      setSettingTheme(this.$state)
+    }
+  }
 });

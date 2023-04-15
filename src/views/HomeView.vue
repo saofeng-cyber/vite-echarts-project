@@ -3,10 +3,15 @@
 import MainLeft from '@/components/main/left/index.vue'
 import MainRight from '@/components/main/right/index.vue'
 import MainCenter from '@/components/main/center/index.vue'
+import SvgIcon from '@/components/SvgIcon.vue';
 import { getScale } from '@/hooks/scale';
 import { CSSProperties } from 'vue';
-import { usethemeStore } from '@/stores/themeStore';
-const useTheme = usethemeStore()
+import { useTheme } from '@/hooks/useTheme';
+const { isDark, toggleTheme } = useTheme()
+
+const changeTheme = () => {
+    toggleTheme()
+}
 /* 获取最外层盒子 */
 const dataScreenRef = ref<HTMLElement | null>(null);
 
@@ -27,7 +32,6 @@ const screenStyleResize = () => {
 onMounted(() => {
     // screenStyleResize()
     window.addEventListener('resize', useDebounceFn(screenStyleResize, 250));
-    useTheme.changeTheme('light')
 })
 
 onBeforeUnmount(() => {
@@ -37,6 +41,9 @@ onBeforeUnmount(() => {
 
 <template>
     <main class="screen_container">
+        <div class="change_theme">
+            <svg-icon :name="isDark ? 'moon' : 'sun'" :width="24" :height="24" fill="#fff" @click="changeTheme"></svg-icon>
+        </div>
         <section class="dataScreen" ref="dataScreenRef" :style="screenStyle">
             <!-- <Header /> -->
             <main class="dataScreen_main">
@@ -60,6 +67,15 @@ onBeforeUnmount(() => {
     background-attachment: fixed;
     overflow: hidden;
     object-fit: cover;
+
+    .change_theme {
+        position: absolute;
+        right: 16px;
+        top: 24px;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+    }
 
     .dataScreen {
         display: flex;
