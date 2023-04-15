@@ -73,6 +73,13 @@ const hotPlateChartOption = ref<ECOption>({
       },
       colorBy: "data",
       zlevel: 1,
+      label: {
+        show: true,
+        fontSize: 12,
+        color: '#fff',
+        position: 'inside',
+        formatter: '{c}%'
+      },
       animationDelay: 1000,
       animationEasing: "elasticOut",
     },
