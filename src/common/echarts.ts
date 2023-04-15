@@ -124,40 +124,40 @@ export const useEcharts = (
 
   // const { width, height } = useElementSize(el, initialSize);
 
-  const scope = effectScope();
+  // const scope = effectScope();
 
-  scope.run(() => {
-    // 监听dom元素变化
-    // watch([() => width.value, () => height.value], ([newWidth, newHeight]) => {
-    //   if (newWidth === 0 && newHeight === 0) {
-    //     // 节点被删除 将chart置为空
-    //     echartsInstance = null;
-    // }
-    //   if (isRendered()) {
-    //     resizeEcharts();
-    //   } else {
-    //     renderEcharts();
-    //   }
-    // });
-    // 更换主题的监听
-    watch(
-      () => theme.value,
-      () => {
-        updateEcharts();
-      }
-    );
+  // scope.run(() => {
+  // 监听dom元素变化
+  // watch([() => width.value, () => height.value], ([newWidth, newHeight]) => {
+  //   if (newWidth === 0 && newHeight === 0) {
+  //     // 节点被删除 将chart置为空
+  //     echartsInstance = null;
+  // }
+  //   if (isRendered()) {
+  //     resizeEcharts();
+  //   } else {
+  //     renderEcharts();
+  //   }
+  // });
+  // 更换主题的监听
+  watch(
+    () => theme.value,
+    () => {
+      updateEcharts();
+    }
+  );
+  // });
+
+  // onScopeDispose(() => {
+  //   destroyEcharts();
+  //   scope.stop();
+  // });
+
+  // onMounted(() => {
+  updateEcharts();
+  window.addEventListener('resize', () => {
+    if (isRendered()) resizeEcharts();
+    else renderEcharts();
   });
-
-  onScopeDispose(() => {
-    destroyEcharts();
-    scope.stop();
-  });
-
-  onMounted(() => {
-    updateEcharts();
-    window.addEventListener('resize', () => {
-      if (isRendered()) resizeEcharts()
-      else renderEcharts()
-    });
-  })
+  // })
 };

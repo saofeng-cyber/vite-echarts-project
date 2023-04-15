@@ -87,8 +87,9 @@ const pieOptions = ref<ECOption>({
 const initCharts = () => {
     useEcharts(pieChart, pieOptions)
 }
-initCharts()
-defineExpose({ initCharts })
+onMounted(()=>{
+    initCharts()
+})
 </script>
 <template>
     <div ref="pieChart" class="pieChart" />

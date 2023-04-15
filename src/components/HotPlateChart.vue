@@ -48,7 +48,7 @@ const hotPlateChartOption = ref<ECOption>({
     },
     {
       type: "category",
-      data: [60, 30, 25 ,20, 16],
+      data: [60, 30, 25, 20, 16],
       axisLabel: {
         fontSize: 16,
         color: "#fff",
@@ -67,7 +67,7 @@ const hotPlateChartOption = ref<ECOption>({
       type: "bar",
       yAxisIndex: 0,
       barWidth: 12,
-      data: [60, 30, 25 ,20, 16],
+      data: [60, 30, 25, 20, 16],
       itemStyle: {
         borderRadius: 6,
       },
@@ -90,16 +90,18 @@ const hotPlateChartOption = ref<ECOption>({
       barGap: "-100%",
       data: [100, 100, 100, 100, 100],
       itemStyle: {
-          color: "none",
-          borderColor: "#00c1de",
-          borderWidth: 1,
-          borderRadius: 15,
-        },
+        color: "none",
+        borderColor: "#00c1de",
+        borderWidth: 1,
+        borderRadius: 15,
+      },
       color: '#2e5384',
     }
   ]
 })
-useEcharts(hotPlateChart, hotPlateChartOption)
+onMounted(() => {
+  useEcharts(hotPlateChart, hotPlateChartOption)
+})
 </script>
 <style lang="scss" scoped>
 .hotPlateChart {

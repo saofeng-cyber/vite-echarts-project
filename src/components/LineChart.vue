@@ -221,7 +221,9 @@ const lineOptions = ref<ECOption>({
     //     }
     // ]
 });
-useEcharts(lineChart, lineOptions)
+onMounted(()=>{
+    useEcharts(lineChart, lineOptions)
+})
 </script>
 <template>
     <div ref="lineChart" class="lineChart" />

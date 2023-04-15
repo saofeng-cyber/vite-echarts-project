@@ -77,7 +77,9 @@ const barOptions = ref<ECOption>({
         }
     ]
 });
-useEcharts(barChart, barOptions)
+onMounted(()=> {
+    useEcharts(barChart, barOptions)
+})
 </script>
 <template>
     <div ref="barChart" class="barChart" />

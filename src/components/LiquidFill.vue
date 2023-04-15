@@ -136,7 +136,9 @@ const liquidFillOptions = ref<any>({
         }
     ]
 })
-useEcharts(liquidFill, liquidFillOptions)
+onMounted(()=>{
+    useEcharts(liquidFill, liquidFillOptions)
+})
 </script>
 <template>
     <div ref="liquidFill" class="liquidFill" />

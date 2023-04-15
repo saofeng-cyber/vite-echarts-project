@@ -44,7 +44,9 @@ const graphOptions = ref<ECOption>({
         }
     ]
 });
-useEcharts(graphChart, graphOptions)
+onMounted(()=>{
+    useEcharts(graphChart, graphOptions)
+})
 </script>
 <template>
     <div ref="graphChart" class="graphChart" />

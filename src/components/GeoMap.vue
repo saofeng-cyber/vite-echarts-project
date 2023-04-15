@@ -181,7 +181,7 @@ const geoMapChartOptions = ref<ECOption>({
             effect: {
                 show: true,
                 period: 3,
-                trailLength: 0.2,
+                trailLength: 0.01,
                 color: "red", //arrow箭头的颜色
                 symbolSize: 3,
                 // roundTrip: true
@@ -203,7 +203,7 @@ const geoMapChartOptions = ref<ECOption>({
             effect: {
                 show: true,
                 period: 3,
-                trailLength: 0.01,
+                trailLength: 0,
                 symbol: DogSvg,
                 symbolSize: 20,
                 // roundTrip: true,
@@ -225,23 +225,12 @@ const geoMapChartOptions = ref<ECOption>({
             symbolSize: 12,
             data: effectScatterData,
             colorBy: 'data'
-        },
-        {
-            type: 'pie',
-            zlevel: -1,
-            itemStyle: {
-                color: '#931ad2',
-                shadowBlur: 100,
-                shadowColor: 'rgba(0, 0, 0, 0.5)'
-            },
-            label: {
-                show: false
-            },
-            data: [],
         }
     ]
 })
-useEcharts(geoMapChart, geoMapChartOptions)
+onMounted(()=> {
+    useEcharts(geoMapChart, geoMapChartOptions)
+})
 </script>
 <template>
     <div ref="geoMapChart" class="geoMapChart" />
