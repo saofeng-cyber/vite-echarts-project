@@ -7,7 +7,7 @@ set -e
 # pnpm build
 
 # 进入生成的文件夹
-cd echarts
+cd vite-echarts-project
 
 # 如果是发布到自定义域名
 # echo 'www.example.com' > CNAME

@@ -10,7 +10,7 @@ import { resolve } from 'node:path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: './echarts',
+  base: '/vite-echarts-project/',
   plugins: [
     vue(),
     vueJsx(),
@@ -48,19 +48,28 @@ export default defineConfig({
     }
   },
   build: {
-    outDir: 'echarts',
-    rollupOptions: {
-      input: {
-        index: 'index.html',
+    outDir: 'vite-echarts-project',
+    assetsDir: './',
+    emptyOutDir: true,
+    sourcemap: true,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true
       },
+    },
+    copyPublicDir: true,
+    reportCompressedSize: true,
+    chunkSizeWarningLimit: 500,
+    cssMinify: true,
+    cssCodeSplit: true,
+    rollupOptions: {
       output: {
-        manualChunks: {
-          echarts: ['echarts']
-        },
-        chunkFileNames: 'js/[name]-[hash].js',
-        entryFileNames: 'js/[name]-[hash].js',
-        // assetFileNames: 'css/[name]-[hash].css'
-      }
+        chunkFileNames: 'js/[name]-[chunk]-[hash:10].js',
+        entryFileNames: 'js/[name]-[hash:10].js',
+        assetFileNames: 'css/[name]-[hash:10].[ext]',
+        compact: true
+      },
     }
   }
 })
