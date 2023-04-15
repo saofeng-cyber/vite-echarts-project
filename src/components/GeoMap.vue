@@ -108,6 +108,16 @@ const geoMapChartOptions = ref<ECOption>({
             }
         }
     },
+    // visualMap: { //图例值控制
+    //     min: 0,
+    //     max: 3000,
+    //     calculable: true,
+    //     show: false,
+    //     color: ['#f44336', '#fc9700', '#ffde00', '#ffde00', '#00eaff'],
+    //     textStyle: {
+    //         color: '#fff'
+    //     }
+    // },
     geo: {
         map: 'china',
         roam: false,
@@ -167,19 +177,19 @@ const geoMapChartOptions = ref<ECOption>({
             name: "",
             type: "lines",
             coordinateSystem: "geo",
-            zlevel: 1,
+            zlevel: 2,
             effect: {
                 show: true,
                 period: 3,
-                trailLength: 0.7,
+                trailLength: 0.2,
                 color: "red", //arrow箭头的颜色
                 symbolSize: 3,
-                roundTrip: true
+                // roundTrip: true
             },
             lineStyle: {
                 color: '#fff',
                 width: 1,
-                curveness: 0.5,
+                curveness: 0.2,
             },
             data: mapData,
         },
@@ -193,18 +203,18 @@ const geoMapChartOptions = ref<ECOption>({
             effect: {
                 show: true,
                 period: 3,
-                trailLength: 0.1,
+                trailLength: 0.01,
                 symbol: DogSvg,
-                symbolSize: 25,
-                roundTrip: true,
-                color: '#fff',
-                loop: true,
+                symbolSize: 20,
+                // roundTrip: true,
+                // color: '#fff',
+                // loop: true,
             },
             lineStyle: {
                 color: "#fff",
                 width: 1,
                 opacity: 0.6,
-                curveness: 0.5,
+                curveness: 0.2,
             },
             data: mapData
         },
