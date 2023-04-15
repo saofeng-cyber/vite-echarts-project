@@ -19,13 +19,12 @@ import LineChart from '@/components/LineChart.vue';
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding-top: 40px;
 
     .dataScreen_main_ct_tp {
-        height: 64%;
+        height: 68%;
     }
     .dataScreen_main_ct_ct {
-        height: 36%;
+        height: 32%;
     }
 }
 </style>

@@ -37,7 +37,7 @@ import {
 } from 'echarts/components';
 import { LabelLayout, UniversalTransition } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
-import { ComputedRef, Ref, effectScope, nextTick, onScopeDispose, watch } from 'vue';
+import { ComputedRef, Ref, nextTick, watch } from 'vue';
 // import { useElementSize } from '@vueuse/core';
 import { computed } from 'vue';
 
