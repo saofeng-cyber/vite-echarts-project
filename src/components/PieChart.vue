@@ -17,7 +17,7 @@ const pieOptions = ref<ECOption>({
     },
     legend: {
         orient: 'vertical',
-        right: '8%',
+        right: 0,
         top: 'center',
         textStyle: {
             color: '#fff'

@@ -111,7 +111,7 @@ export const useEcharts = (
     return Boolean(el.value && echartsInstance);
   }
 
-  function updateTheme() {
+  function updateEcharts() {
     destroyEcharts();
     renderEcharts();
   }
@@ -139,7 +139,7 @@ export const useEcharts = (
     watch(
       () => theme.value,
       () => {
-        updateTheme();
+        updateEcharts();
       }
     );
   });
@@ -150,7 +150,7 @@ export const useEcharts = (
   });
 
   onMounted(() => {
-    renderEcharts();
+    updateEcharts();
     window.addEventListener('resize', () => {
       if (isRendered()) resizeEcharts()
       else renderEcharts()
