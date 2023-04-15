@@ -1,6 +1,6 @@
 const LOCAL_NAME = 'appSetting';
 import { EchartTheme } from '@/common/echarts';
-import { ss } from '@/hooks/storage';
+import { ss } from '@/common/storage';
 export interface AppSetting {
   theme: EchartTheme;
 }
