@@ -13,7 +13,9 @@ import {
   MapChart,
   MapSeriesOption,
   LinesChart,
-  LinesSeriesOption
+  LinesSeriesOption,
+  EffectScatterChart,
+  EffectScatterSeriesOption
 } from 'echarts/charts';
 import {
   TitleComponent,
@@ -53,6 +55,7 @@ export type ECOption = echarts.ComposeOption<
   | GraphSeriesOption
   | MapSeriesOption
   | LinesSeriesOption
+  | EffectScatterSeriesOption
 >;
 
 // 注册必须的组件
@@ -72,7 +75,8 @@ echarts.use([
   ToolboxComponent,
   GraphChart,
   MapChart,
-  LinesChart
+  LinesChart,
+  EffectScatterChart
 ]);
 
 export type EchartTheme = 'light' | 'dark';

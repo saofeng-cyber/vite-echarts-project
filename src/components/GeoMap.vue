@@ -69,6 +69,9 @@ const mapData = [
         ],
     },
 ];
+const effectScatterData: any = MapJson.features.map((item) => {
+    return item.properties.centroid
+})
 const geoMapChart = ref<HTMLElement | null>(null)
 echarts.registerMap('china', MapJson as any);
 const geoMapChartOptions = ref<ECOption>({
@@ -93,7 +96,7 @@ const geoMapChartOptions = ref<ECOption>({
                     color: '#fff',
                     shadowColor: '#9571E9',
                     shadowBlur: 10,
-                    borderWidth:1,
+                    borderWidth: 1,
                     borderColor: '#9571E9',
                 },
                 emphasis: {
@@ -108,14 +111,14 @@ const geoMapChartOptions = ref<ECOption>({
     geo: {
         map: 'china',
         roam: false,
-        zoom: 1.66,
+        zoom: 1.64,
         center: [102.848234, 35.82333],
         scaleLimit: {
             min: 0.8,
         },
         label: {
             show: true,
-            color: '#fff',
+            color: '#fff'
         },
         itemStyle: {
             areaColor: {
@@ -204,6 +207,14 @@ const geoMapChartOptions = ref<ECOption>({
                 curveness: 0.5,
             },
             data: mapData
+        },
+        {
+            type: 'effectScatter',
+            coordinateSystem: 'geo',
+            symbol: 'circle',
+            symbolSize: 12,
+            data: effectScatterData,
+            colorBy: 'data'
         },
         {
             type: 'pie',
