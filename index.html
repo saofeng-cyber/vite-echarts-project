@@ -1,13 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>智慧平台医疗服务平台</title>
   </head>
+  <style>
+    #loading {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: auto;
+      width: 200px;
+      height: 200px;
+    }
+  </style>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div id="loading"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
     <script type="module" src="/src/main.ts"></script>
+    <script>
+      const loadingRef = document.getElementById('loading');
+      const myChart = echarts.init(loadingRef);
+      const loadingOption = {
+        graphic: {
+          elements: [
+            {
+              type: 'group',
+              left: 'center',
+              top: 'center',
+              children: new Array(7).fill(0).map((val, i) => ({
+                type: 'rect',
+                x: i * 20,
+                shape: {
+                  x: 0,
+                  y: -40,
+                  width: 10,
+                  height: 80
+                },
+                style: {
+                  fill: '#5470c6'
+                },
+                keyframeAnimation: {
+                  duration: 1000,
+                  delay: i * 200,
+                  loop: true,
+                  keyframes: [
+                    {
+                      percent: 0.5,
+                      scaleY: 0.3,
+                      easing: 'cubicIn'
+                    },
+                    {
+                      percent: 1,
+                      scaleY: 1,
+                      easing: 'cubicOut'
+                    }
+                  ]
+                }
+              }))
+            }
+          ]
+        }
+      };
+      myChart.setOption(loadingOption);
+    </script>
   </body>
 </html>
