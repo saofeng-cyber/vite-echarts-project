@@ -8,10 +8,6 @@ import { getScale } from '@/hooks/scale';
 import { CSSProperties } from 'vue';
 import { useTheme } from '@/hooks/useTheme';
 const { isDark, toggleTheme } = useTheme()
-
-const changeTheme = () => {
-    toggleTheme()
-}
 /* 获取最外层盒子 */
 const dataScreenRef = ref<HTMLElement | null>(null);
 
@@ -30,7 +26,6 @@ const screenStyleResize = () => {
     }
 }
 onMounted(() => {
-    // screenStyleResize()
     window.addEventListener('resize', useDebounceFn(screenStyleResize, 250));
 })
 
@@ -40,9 +35,9 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-    <main class="screen_container">
+    <main :class="[isDark ? 'screen_container_dark' : 'screen_container']">
         <div class="change_theme">
-            <svg-icon :name="isDark ? 'moon' : 'sun'" :width="24" :height="24" fill="#fff" @click="changeTheme"></svg-icon>
+            <svg-icon :name="isDark ? 'moon' : 'sun'" :width="24" :height="24" fill="#fff" @click="toggleTheme"></svg-icon>
         </div>
         <section class="dataScreen" ref="dataScreenRef" :style="screenStyle">
             <!-- <Header /> -->
@@ -56,48 +51,54 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped lang="scss">
+.screen_container_dark {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #100c2a;
+}
+
 .screen_container {
     position: relative;
     width: 100%;
     height: 100%;
-    position: relative;
-    background-image: url("@/assets/images/bg.png");
     background-size: 100% 100%;
-    background-repeat: no-repeat;
     background-attachment: fixed;
+    background-image: url("@/assets/images/bg.png");
     overflow: hidden;
     object-fit: cover;
+}
 
-    .change_theme {
-        position: absolute;
-        right: 16px;
-        top: 24px;
-        width: 32px;
-        height: 32px;
-        cursor: pointer;
-    }
+.change_theme {
+    position: absolute;
+    right: 16px;
+    top: 12px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
 
-    .dataScreen {
+.dataScreen {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: top left;
+    z-index: 999;
+    transition: all 0.5s ease-in;
+
+    .dataScreen_main {
+        flex: 1;
         display: flex;
-        flex-direction: column;
-        height: 100%;
         width: 100%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform-origin: top left;
-        z-index: 999;
-        transition: all 0.5s ease-in;
+        padding: 12px 42px 20px;
 
-        .dataScreen_main {
-            flex: 1;
-            display: flex;
-            width: 100%;
-            padding: 12px 42px 20px;
+        // background-color: beige;
 
-            // background-color: beige;
-
-        }
     }
 }
 </style>
