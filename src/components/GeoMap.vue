@@ -79,6 +79,32 @@ const geoMapChartOptions = ref<ECOption>({
         },
         backgroundColor: 'rgba(0,0,0,0.5)',
     },
+    toolbox: {
+        itemSize: 25,
+        feature: {
+            saveAsImage: {
+                show: true,
+                type: 'png',
+                name: '地图',
+                icon: 'path://M939.008 341.333333l-426.666667 426.666667-426.666666-426.666667h234.666666V0h384v341.333333h234.666667z m-853.333333 512h853.333333v170.666667h-853.333333v-170.666667z',
+                title: '保存为图片',
+                backgroundColor: 'rgba(0,0,0,0.5)',
+                iconStyle: {
+                    color: '#fff',
+                    shadowColor: '#9571E9',
+                    shadowBlur: 10,
+                    borderWidth:1,
+                    borderColor: '#9571E9',
+                },
+                emphasis: {
+                    iconStyle: {
+                        color: '#fff',
+                        shadowColor: '#9571E9',
+                    },
+                }
+            }
+        }
+    },
     geo: {
         map: 'china',
         roam: false,
