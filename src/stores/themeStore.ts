@@ -6,10 +6,10 @@ export const usethemeStore = defineStore('themestore', {
   actions: {
     setTheme(theme: EchartTheme) {
       this.theme = theme;
-      this.recordState()
+      this.recordState();
     },
     recordState() {
-      setSettingTheme(this.$state)
+      setSettingTheme(this.$state);
     }
   }
 });

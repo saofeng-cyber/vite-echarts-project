@@ -9,7 +9,7 @@ export const useTheme = () => {
     } else {
       themeStore.setTheme('dark');
     }
-  }
+  };
   return {
     isDark,
     toggleTheme

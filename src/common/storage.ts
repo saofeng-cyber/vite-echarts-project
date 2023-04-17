@@ -31,6 +31,4 @@ export const useStorage = () => {
   };
 };
 const ss = useStorage();
-export {
-  ss
-}
+export { ss };

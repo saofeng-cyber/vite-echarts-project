@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { ECOption, useEcharts } from "@/common/echarts";
+import { ECOption, useEcharts } from '@/common/echarts';
 // import { ranking1, ranking2, ranking3, ranking4 } from "./ranking-icon";
 const hotPlateChart = ref<HTMLElement | null>(null);
 // interface ChartProp {
@@ -24,19 +24,19 @@ const hotPlateChartOption = ref<ECOption>({
     right: '3%',
     top: '8%',
     bottom: '3%',
-    containLabel: true,
+    containLabel: true
   },
   xAxis: {
-    type: "value",
+    type: 'value',
     show: false
   },
   yAxis: [
     {
-      type: "category",
+      type: 'category',
       data: ['分诊', '预约', '体检', '血透', '心电'],
       axisLabel: {
         fontSize: 16,
-        color: "#fff",
+        color: '#fff'
       },
       axisLine: {
         show: false
@@ -47,11 +47,11 @@ const hotPlateChartOption = ref<ECOption>({
       inverse: true
     },
     {
-      type: "category",
+      type: 'category',
       data: [60, 30, 25, 20, 16],
       axisLabel: {
         fontSize: 16,
-        color: "#fff",
+        color: '#fff'
       },
       axisLine: {
         show: false
@@ -64,14 +64,14 @@ const hotPlateChartOption = ref<ECOption>({
   ],
   series: [
     {
-      type: "bar",
+      type: 'bar',
       yAxisIndex: 0,
       barWidth: 12,
       data: [60, 30, 25, 20, 16],
       itemStyle: {
-        borderRadius: 6,
+        borderRadius: 6
       },
-      colorBy: "data",
+      colorBy: 'data',
       zlevel: 1,
       label: {
         show: true,
@@ -81,27 +81,27 @@ const hotPlateChartOption = ref<ECOption>({
         formatter: '{c}%'
       },
       animationDelay: 1000,
-      animationEasing: "elasticOut",
+      animationEasing: 'elasticOut'
     },
     {
-      type: "bar",
+      type: 'bar',
       yAxisIndex: 1,
       barWidth: 18,
-      barGap: "-100%",
+      barGap: '-100%',
       data: [100, 100, 100, 100, 100],
       itemStyle: {
-        color: "none",
-        borderColor: "#00c1de",
+        color: 'none',
+        borderColor: '#00c1de',
         borderWidth: 1,
-        borderRadius: 15,
+        borderRadius: 15
       },
-      color: '#2e5384',
+      color: '#2e5384'
     }
   ]
-})
+});
 onMounted(() => {
-  useEcharts(hotPlateChart, hotPlateChartOption)
-})
+  useEcharts(hotPlateChart, hotPlateChartOption);
+});
 </script>
 <style lang="scss" scoped>
 .hotPlateChart {
