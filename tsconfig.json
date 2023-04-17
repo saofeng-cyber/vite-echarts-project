@@ -1,6 +1,7 @@
 {
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "custom/*.d.ts"],
   "compilerOptions": {
+    "composite": true,
     "baseUrl": ".",
     "module": "ESNext",
     "target": "ESNext",
