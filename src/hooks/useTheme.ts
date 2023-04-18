@@ -1,7 +1,7 @@
-import { usethemeStore } from '@/stores/themeStore';
+import { useAppStore } from '@/stores/appStore';
 
 export const useTheme = () => {
-  const themeStore = usethemeStore();
+  const themeStore = useAppStore();
   const isDark = computed(() => themeStore.theme === 'dark');
   const toggleTheme = () => {
     if (isDark.value === true) {

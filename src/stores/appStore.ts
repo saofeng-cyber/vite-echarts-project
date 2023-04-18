@@ -1,7 +1,7 @@
 import { EchartTheme } from '@/common/echarts';
 import { AppSetting, getSettingTheme, setSettingTheme } from './help';
 
-export const usethemeStore = defineStore('themestore', {
+export const useAppStore = defineStore('appstore', {
   state: (): AppSetting => getSettingTheme(),
   actions: {
     setTheme(theme: EchartTheme) {

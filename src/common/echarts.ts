@@ -1,5 +1,5 @@
 import * as echarts from 'echarts/core';
-import { usethemeStore } from '@/stores/themeStore';
+import { useAppStore } from '@/stores/appStore';
 import {
   BarChart,
   // 系列类型的定义后缀都为 SeriesOption
@@ -90,8 +90,8 @@ export const useEcharts = (
   el: Ref<HTMLElement | null | undefined>,
   options: Ref<ECOption> | ComputedRef<ECOption>
 ): void => {
-  const useTheme = usethemeStore();
-  const theme = computed(() => useTheme.theme);
+  const useApp = useAppStore();
+  const theme = computed(() => useApp.theme);
   let echartsInstance: echarts.ECharts | null = null;
   async function renderEcharts(): Promise<void> {
     if (el.value) {
