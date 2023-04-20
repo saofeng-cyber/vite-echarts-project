@@ -56,10 +56,5 @@
       "pnpm lint",
       "pnpm format"
     ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
   }
 }

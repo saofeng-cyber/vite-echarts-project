@@ -1,5 +1,5 @@
 {
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "custom/*.d.ts"],
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "custom/*.d.ts", "src/components/data/*.json"],
   "compilerOptions": {
     "composite": true,
     "baseUrl": ".",
@@ -16,7 +16,7 @@
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "types": ["vite/client", "node", "naive-ui/volar", "vite-plugin-svg-icons/client"],
+    "types": ["vite/client", "node", "vite-plugin-svg-icons/client"],
     "paths": {
       "@/*": ["./src/*"]
     }

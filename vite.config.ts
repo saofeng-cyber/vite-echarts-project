@@ -39,14 +39,7 @@ export default defineConfig({
   },
   server: {
     host: '0.0.0.0',
-    port: 5174,
-    proxy: {
-      '/api': {
-        target: 'https://geo.datav.aliyun.com/areas_v3',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
-      }
-    }
+    port: 5174
   },
   build: {
     outDir: 'vite-echarts-project',

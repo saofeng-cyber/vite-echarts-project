@@ -70,7 +70,7 @@ onBeforeUnmount(() => {
   height: 100%;
   background-size: 100% 100%;
   background-attachment: fixed;
-  background-image: url('@/assets/images/bg.png');
+  background-image: url('https://pic.imgdb.cn/item/643fec250d2dde5777559f48.png');
   overflow: hidden;
   object-fit: cover;
 }
