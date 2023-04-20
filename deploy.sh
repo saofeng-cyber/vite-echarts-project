@@ -22,4 +22,6 @@ git commit -m 'deploy'
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
 git push -f git@github.com:saofeng-cyber/vite-echarts-project.git master:gh-pages
 
+rm -rf .git
+
 cd -
