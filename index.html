@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/vite-echarts-project/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>可视化大屏</title>
+    <script type="module" crossorigin src="/vite-echarts-project/js/index-a2fe010bca.js"></script>
+    <link rel="stylesheet" href="/vite-echarts-project/css/index-1790929ad5.css">
+  </head>
+  <style>
+    #loading {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: auto;
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+  <body>
+    <div id="app">
+      <div id="loading"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js" integrity="sha512-VdqgeoWrVJcsDXFlQEKqE5MyhaIgB9yXUVaiUa8DR2J4Lr1uWcFm+ZH/YnzV5WqgKf4GPyHQ64vVLgzqGIchyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script>
+      const loadingRef = document.getElementById('loading');
+      const myChart = echarts.init(loadingRef);
+      const loadingOption = {
+        graphic: {
+          elements: [
+            {
+              type: 'group',
+              left: 'center',
+              top: 'center',
+              children: new Array(7).fill(0).map((val, i) => ({
+                type: 'rect',
+                x: i * 20,
+                shape: {
+                  x: 0,
+                  y: -40,
+                  width: 10,
+                  height: 80,
+                  r: 10
+                },
+                style: {
+                  fill: '#5813aa'
+                },
+                keyframeAnimation: {
+                  duration: 1000,
+                  delay: i * 200,
+                  loop: true,
+                  keyframes: [
+                    {
+                      percent: 0.2,
+                      scaleY: 0.3,
+                      easing: 'cubicIn'
+                    },
+                    {
+                      percent: 1,
+                      scaleY: 1,
+                      easing: 'cubicOut'
+                    }
+                  ]
+                }
+              }))
+            }
+          ]
+        }
+      };
+      myChart.setOption(loadingOption);
+    </script>
+  </body>
+</html>
