@@ -1,7 +1,12 @@
 <script setup lang="ts">
-import { ECOption, useEcharts } from '@/common/echarts';
+import { useEcharts } from '@/common/echarts';
+import { BarSeriesOption } from 'echarts';
+import { onMounted, ref, watch } from 'vue';
+const props = defineProps<{
+  barData: Array<{ name: string; value: number }>;
+}>();
 const barChart = ref<HTMLElement | null>(null);
-const barOptions = ref<ECOption>({
+const barOptions = ref<echarts.ComposeOption<BarSeriesOption>>({
   grid: {
     top: '5%',
     bottom: '5%',
@@ -36,16 +41,7 @@ const barOptions = ref<ECOption>({
     {
       name: '访问来源',
       type: 'bar',
-      data: [
-        { value: 335, name: '直接访问' },
-        { value: 310, name: '邮件营销' },
-        { value: 234, name: '联盟广告' },
-        { value: 135, name: '视频广告' },
-        { value: 320, name: '百度' },
-        { value: 251, name: '谷歌' },
-        { value: 147, name: '必应' },
-        { value: 102, name: '其他' }
-      ],
+      data: props.barData as any,
       colorBy: 'data',
       labelLine: {
         show: false
@@ -77,9 +73,19 @@ const barOptions = ref<ECOption>({
     }
   ]
 });
-onMounted(() => {
-  useEcharts(barChart, barOptions);
-});
+const { updateEchartsByData } = useEcharts(barChart, barOptions);
+onMounted(updateEchartsByData);
+watch(
+  () => props.barData,
+  (newVal: any) => {
+    if (barOptions.value) {
+      if (barOptions.value.series instanceof Array) {
+        barOptions.value.series[0].data = newVal;
+      }
+      updateEchartsByData();
+    }
+  }
+);
 </script>
 <template>
   <div ref="barChart" class="barChart" />

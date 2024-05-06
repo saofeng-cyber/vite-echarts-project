@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ECOption, useEcharts } from '@/common/echarts';
 import graph from './data/graph.json';
+import { onMounted, ref } from 'vue';
 const graphChart = ref<HTMLElement | null>(null);
 
 const graphOptions = ref<ECOption>({

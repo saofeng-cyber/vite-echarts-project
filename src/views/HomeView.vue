@@ -5,8 +5,9 @@ import MainRight from '@/components/main/right/index.vue';
 import MainCenter from '@/components/main/center/index.vue';
 import SvgIcon from '@/components/SvgIcon.vue';
 import { getScale } from '@/hooks/scale';
-import { CSSProperties } from 'vue';
+import { CSSProperties, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useTheme } from '@/hooks/useTheme';
+import { useDebounceFn } from '@vueuse/core';
 const { isDark, toggleTheme } = useTheme();
 /* 获取最外层盒子 */
 const dataScreenRef = ref<HTMLElement | null>(null);

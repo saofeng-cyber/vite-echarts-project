@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue';
 import { ECOption, useEcharts } from '@/common/echarts';
 import { LineSeriesOption } from 'echarts/charts';
 const lineChart = ref<HTMLElement | null>(null);

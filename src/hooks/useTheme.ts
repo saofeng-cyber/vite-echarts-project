@@ -1,4 +1,5 @@
 import { useAppStore } from '@/stores/appStore';
+import { computed } from 'vue';
 
 export const useTheme = () => {
   const themeStore = useAppStore();

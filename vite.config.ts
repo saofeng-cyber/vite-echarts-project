@@ -2,9 +2,6 @@
 
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import vueJsx from '@vitejs/plugin-vue-jsx';
-import AutoImport from 'unplugin-auto-import/vite';
-import Components from 'unplugin-vue-components/vite';
 import { resolve } from 'node:path';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 
@@ -13,15 +10,6 @@ export default defineConfig({
   base: '/vite-echarts-project/',
   plugins: [
     vue(),
-    vueJsx(),
-    AutoImport({
-      imports: ['vue', '@vueuse/core', 'pinia'],
-      dts: 'custom/auto-imports.d.ts'
-    }),
-    Components({
-      dirs: 'src/components',
-      dts: 'custom/component.d.ts'
-    }),
     createSvgIconsPlugin({
       iconDirs: [resolve(process.cwd(), 'src/assets/icons')],
       symbolId: 'icon-[dir]-[name]',

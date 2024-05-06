@@ -9,6 +9,7 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, ref } from 'vue';
 import { ECOption, useEcharts } from '@/common/echarts';
 // import { ranking1, ranking2, ranking3, ranking4 } from "./ranking-icon";
 const hotPlateChart = ref<HTMLElement | null>(null);

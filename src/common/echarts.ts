@@ -37,7 +37,7 @@ import {
 } from 'echarts/components';
 import { LabelLayout, UniversalTransition } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
-import { ComputedRef, Ref, nextTick, watch } from 'vue';
+import { ComputedRef, Ref, effectScope, nextTick, onScopeDispose, watch } from 'vue';
 // import { useElementSize } from '@vueuse/core';
 import { computed } from 'vue';
 
@@ -86,10 +86,7 @@ export type EchartTheme = 'light' | 'dark';
  * @param el domRef
  * @param options ECOption
  */
-export const useEcharts = (
-  el: Ref<HTMLElement | null | undefined>,
-  options: Ref<ECOption> | ComputedRef<ECOption>
-): void => {
+export const useEcharts = (el: Ref<HTMLElement | null | undefined>, options: Ref<any>) => {
   const useApp = useAppStore();
   const theme = computed(() => useApp.theme);
   let echartsInstance: echarts.ECharts | null = null;
@@ -140,6 +137,9 @@ export const useEcharts = (
     //   }
     // });
     // 更换主题的监听
+
+    // 数据更新
+
     watch(
       () => theme.value,
       () => {
@@ -147,6 +147,14 @@ export const useEcharts = (
       }
     );
   });
+
+  function updateEchartsByData() {
+    if (isRendered()) {
+      echartsInstance?.setOption(options.value);
+    } else {
+      renderEcharts();
+    }
+  }
 
   onScopeDispose(() => {
     destroyEcharts();
@@ -158,6 +166,10 @@ export const useEcharts = (
     if (isRendered()) updateEcharts();
     else renderEcharts();
   });
+
+  return {
+    updateEchartsByData
+  };
 };
 
 // function debance(duration: number, callfun: Function) {

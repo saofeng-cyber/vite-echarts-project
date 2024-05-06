@@ -1,7 +1,12 @@
 <script setup lang="ts">
-import { ECOption, useEcharts } from '@/common/echarts';
+import { onMounted, ref, watch } from 'vue';
+import { useEcharts } from '@/common/echarts';
+import { PieSeriesOption } from 'echarts';
+const props = defineProps<{
+  pieData: Array<{ name: string; value: number }>;
+}>();
 const pieChart = ref<HTMLElement | null>(null);
-const pieOptions = ref<ECOption>({
+const pieOptions = ref<echarts.ComposeOption<PieSeriesOption>>({
   grid: {
     top: '5%',
     bottom: '5%',
@@ -42,13 +47,7 @@ const pieOptions = ref<ECOption>({
         shadowBlur: 20,
         borderRadius: 25
       },
-      data: [
-        { value: 335, name: '直接访问' },
-        { value: 320, name: '百度' },
-        { value: 251, name: '谷歌' },
-        { value: 250, name: '必应' },
-        { value: 320, name: '其他' }
-      ],
+      data: props.pieData,
       animationType: 'scale',
       animationDelay: 1200
     },
@@ -84,12 +83,20 @@ const pieOptions = ref<ECOption>({
     }
   ]
 });
-const initCharts = () => {
-  useEcharts(pieChart, pieOptions);
-};
-onMounted(() => {
-  initCharts();
-});
+
+const { updateEchartsByData } = useEcharts(pieChart, pieOptions);
+onMounted(updateEchartsByData);
+watch(
+  () => props.pieData,
+  (newVal: any) => {
+    if (pieOptions.value) {
+      if (pieOptions.value.series instanceof Array) {
+        pieOptions.value.series[0].data = newVal;
+      }
+      updateEchartsByData();
+    }
+  }
+);
 </script>
 <template>
   <div ref="pieChart" class="pieChart" />
